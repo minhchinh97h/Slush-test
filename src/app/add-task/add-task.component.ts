@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { TasksService } from "../tasks.service";
+import { Task } from "../shared/task.model";
 
 @Component({
   selector: "app-add-task",
@@ -7,17 +9,19 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./add-task.component.css"]
 })
 export class AddTaskComponent implements OnInit {
-  tags: string[] = [];
+  tags: string[] = ["General"];
   tagInput: string = "";
-  @ViewChild("tagRef") tagRef: ElementRef;
+  titleInput: string = "";
+  descriptionInput: string = "";
+
   @ViewChild("formRef") formRef: NgForm;
 
-  constructor() {}
+  constructor(private tasksService: TasksService) {}
 
   ngOnInit(): void {}
 
   onAddTag(event: KeyboardEvent): void {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || event.keyCode === 13) {
       // ADD TAG
       const entered_tags = this.tagInput.trim().split(/\s*,\s*/);
       this.tags = this.tags.concat(
@@ -26,16 +30,42 @@ export class AddTaskComponent implements OnInit {
         })
       );
 
-      this.tagRef.nativeElement.value = "";
+      this.tagInput = "";
     }
   }
 
   onReceiveDeletedTagIndex(deletedTagIndex: number): void {
-    this.tags.splice(deletedTagIndex, 1);
+    if (deletedTagIndex !== 0) {
+      this.tags.splice(deletedTagIndex, 1);
+    }
   }
 
-  onCreateTask(event: Event): void {
-    event.preventDefault()
-    console.log(this.formRef)
+  resetForm(): void {
+    this.formRef.reset();
+    this.tags = ["General"];
+  }
+
+  onCreateTask(): void {
+    const newTask: Task = {
+      id: "t-" + Date.now(),
+      title: this.titleInput,
+      description: this.descriptionInput,
+      dateObj: {
+        day: new Date().getDate(),
+        month: new Date().getMonth(),
+        year: new Date().getFullYear()
+      },
+      tags: this.tags
+    };
+
+    this.tasksService.addTask(newTask);
+    this.resetForm();
+  }
+
+  // Prevent submitting form when hit "Enter"
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === "Enter" || event.keyCode === 13) {
+      event.preventDefault();
+    }
   }
 }
