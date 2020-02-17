@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <form (ngSubmit)="onCreateTask($event)" #formRef="ngForm">
+    <div class="form-group">
+      <label for="title">Task title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="Jogging"
+        ngModel
+        name="title"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Task Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        maxlength="1000"
+        style="height: 200px;"
+        placeholder="Jog 3km"
+        ngModel
+        name="description"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="tags">Tags</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        (keyup)="onAddTag($event)"
+        placeholder="Health, Gym"
+        [(ngModel)]="tagInput"
+        name="tags"
+        #tagRef
+      />
+      <div class="add-tag-instruction">
+        <p>Press Enter to add, separate tags by ','</p>
+      </div>
+    </div>
+
+    <app-tags
+      [tags]="tags"
+      (receiveDeletedTagIndex)="onReceiveDeletedTagIndex($event)"
+    ></app-tags>
+
+    <button class="btn btn-primary" type="submit">
+      Create
+    </button>
+  </form>
+</div>

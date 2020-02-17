@@ -1,0 +1,8 @@
+<div class="row-wrap">
+  <app-tag
+    *ngFor="let tag of tags; let i = index"
+    [tag]="tag"
+    [tagIndex]="i"
+    (receiveDeletedTagIndex)="onReceiveDeletedTagIndex($event)"
+  ></app-tag>
+</div>

@@ -1,0 +1,49 @@
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle"
+        (click)="collapsed = !collapsed"
+      >
+        <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+      </button>
+      <a routerLink="/" class="navbar-brand brand-color">To-do App</a>
+    </div>
+
+    <div
+      class="navbar-collapse"
+      [class.collapse]="collapsed"
+      (window:resize)="collapsed = true"
+    >
+      <ul class="nav navbar-nav">
+        <li>
+          <a [routerLink]="['/add-task']" (click)="onSelect('add')"
+            >Add a task</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['/display-all']" (click)="onSelect('display-all')"
+            >All tasks</a
+          >
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown>
+          <a class="dropdown-toggle" role="button"
+            >Manage <span class="caret"></span
+          ></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a>Save Data</a>
+            </li>
+            <li>
+              <a>Fetch Data</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

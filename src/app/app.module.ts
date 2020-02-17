@@ -3,9 +3,19 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
+import { HeaderComponent } from "./header/header.component";
+import { DropdownDirective } from "./shared/dropdown.directive";
+import { AppRoutingModule } from "./app-routing.module";
+import { HomeComponent } from './home/home.component';
+import { AddTaskComponent } from './add-task/add-task.component';
+import { DisplayAllComponent } from './display-all/display-all.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TagsComponent } from './add-task/tags/tags.component';
+import { TagComponent } from './add-task/tags/tag/tag.component';
+
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent, HeaderComponent, DropdownDirective, HomeComponent, AddTaskComponent, DisplayAllComponent, PageNotFoundComponent, TagsComponent, TagComponent],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
