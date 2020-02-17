@@ -1,0 +1,19 @@
+.row-container {
+  background-color: whitesmoke;
+  padding: 20px 25px;
+  border-radius: 13px;
+  margin-top: 15px;
+}
+
+.field-container {
+  display: flex;
+  justify-content: center;
+}
+
+.icon-holder {
+  margin-right: 5px;
+}
+
+.button-field {
+  margin-left: 10px;
+}

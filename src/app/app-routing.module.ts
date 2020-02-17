@@ -4,6 +4,7 @@ import { HomeComponent } from "./home/home.component";
 import { AddTaskComponent } from "./add-task/add-task.component";
 import { DisplayAllComponent } from "./display-all/display-all.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { EditTaskComponent } from "./edit-task/edit-task.component";
 const appRoutes: Routes = [
   {
     path: "",
@@ -12,6 +13,10 @@ const appRoutes: Routes = [
   {
     path: "add-task",
     component: AddTaskComponent
+  },
+  {
+    path: "edit-task/:id",
+    component: EditTaskComponent
   },
   {
     path: "display-all",

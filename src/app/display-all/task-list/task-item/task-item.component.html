@@ -1,5 +1,23 @@
-<div class="row">
-  <div>
-    <p>{{ taskItem.title }}</p>
+<div class="row row-container">
+  <div class="col-sm-4 ">
+    <p>{{ taskItem.title | shortenText: 64 }}</p>
+  </div>
+
+  <div class="col-sm-4 field-container">
+    <p>{{ taskItem.dateObj | customDate }}</p>
+  </div>
+
+  <div class="col-sm-4 field-container button-container">
+    <p style="cursor: pointer;" (click)="onClickEditTask()">
+      <span class="glyphicon glyphicon-pencil icon-holder"></span>Edit
+    </p>
+
+    <p
+      class="button-field"
+      style="cursor: pointer;"
+      (click)="onClickDeleteTask()"
+    >
+      <span class="glyphicon glyphicon-trash icon-holder"></span>Delete
+    </p>
   </div>
 </div>

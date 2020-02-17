@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <form (ngSubmit)="onEditTask()" #formRef="ngForm">
+      <div class="form-group">
+        <label for="title">Task title *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Jogging"
+          [(ngModel)]="titleInput"
+          name="title"
+          (keydown)="onKeyDown($event)"
+          required
+          #title="ngModel"
+        />
+  
+        <div class="add-tag-instruction">
+          <p *ngIf="!title.valid && title.touched">
+            Please enter the task's title
+          </p>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Task Description</label>
+        <textarea
+          class="form-control"
+          id="description"
+          maxlength="1000"
+          style="height: 200px;"
+          placeholder="Jog 3km"
+          [(ngModel)]="descriptionInput"
+          name="description"
+        ></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          (keyup)="onAddTag($event)"
+          placeholder="Health, Gym"
+          [(ngModel)]="tagInput"
+          name="tags"
+          #tagRef
+          (keydown)="onKeyDown($event)"
+        />
+        <div class="add-tag-instruction">
+          <p>Press Enter to add, separate tags by ','</p>
+        </div>
+      </div>
+  
+      <app-tags
+        [tags]="tags"
+        (receiveDeletedTagIndex)="onReceiveDeletedTagIndex($event)"
+      ></app-tags>
+  
+      <div style="margin-top: 20px;">
+        <button class="btn btn-primary" type="submit" [disabled]="!formRef.valid">
+          Edit
+        </button>
+      </div>
+    </form>
+  </div>
+  
