@@ -1,5 +1,84 @@
 <div class="container-fluid">
-  <h3>All created tasks</h3>
+  <div class="row-container-space-between">
+    <h3>All created tasks</h3>
 
-  <app-task-list></app-task-list>
+    <div>
+      <label
+        for="search-field"
+        style="margin-bottom: 0"
+        *ngIf="chosenSearchMethod === 'name'; else tagsSearchBlock"
+      >
+        Search by Name
+        <div class="row-container">
+          <input
+            class="form-control"
+            type="text"
+            id="search-field"
+            placeholder="Work"
+            [(ngModel)]="searchValue"
+          />
+
+          <button
+            class="btn btn-primary"
+            style="margin-left: 7px;"
+            (click)="onSearch()"
+          >
+            Search
+          </button>
+        </div>
+      </label>
+
+      <ng-template #tagsSearchBlock>
+        <label for="search-field" style="margin-bottom: 0">
+          Search by Tags, seperate by ','
+          <div class="row-container">
+            <input
+              class="form-control"
+              type="text"
+              id="search-field"
+              placeholder="Health, Gym"
+            />
+            <button
+              class="btn btn-primary"
+              style="margin-left: 7px;"
+              (click)="onSearch()"
+            >
+              Search
+            </button>
+          </div>
+        </label>
+      </ng-template>
+    </div>
+
+    <div class="row-container-space-between">
+      <div>
+        <p class="normal-para">Filter by</p>
+      </div>
+
+      <div class="row-container">
+        <button
+          class="btn btn-default"
+          style="margin-left: 15px;"
+          (click)="onChooseSearchMethod('name')"
+          [ngClass]="{ pressed: chosenSearchMethod === 'name' }"
+        >
+          Name
+        </button>
+
+        <button
+          class="btn btn-default"
+          style="margin-left: 15px;"
+          (click)="onChooseSearchMethod('tags')"
+          [ngClass]="{ pressed: chosenSearchMethod === 'tags' }"
+        >
+          Tags
+        </button>
+      </div>
+    </div>
+  </div>
+  <app-task-list
+    [searchMethod]="chosenSearchMethod"
+    [searchValue]="searchValue"
+    [updatePipeCount]="updatePipeCount"
+  ></app-task-list>
 </div>

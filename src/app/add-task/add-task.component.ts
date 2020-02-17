@@ -23,9 +23,9 @@ export class AddTaskComponent implements OnInit {
   onAddTag(event: KeyboardEvent): void {
     if (event.key === "Enter" || event.keyCode === 13) {
       // ADD TAG
-      const entered_tags = this.tagInput.trim().split(/\s*,\s*/);
+      const enteredTags = this.tagInput.trim().split(/\s*,\s*/);
       this.tags = this.tags.concat(
-        entered_tags.filter((tag: string) => {
+        enteredTags.filter((tag: string) => {
           return tag.length > 0;
         })
       );

@@ -16,8 +16,9 @@ import { TasksService } from "./tasks.service";
 import { TaskListComponent } from "./display-all/task-list/task-list.component";
 import { TaskItemComponent } from "./display-all/task-list/task-item/task-item.component";
 import { ShortenTextPipe } from "./shared/shorten-text.pipe";
-import { CustomDatePipe } from './shared/customDate.pipe';
-import { EditTaskComponent } from './edit-task/edit-task.component';
+import { CustomDatePipe } from "./shared/customDate.pipe";
+import { EditTaskComponent } from "./edit-task/edit-task.component";
+import { FilterTasksPipe } from "./shared/filterTasks.pipe";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
     TaskItemComponent,
     ShortenTextPipe,
     CustomDatePipe,
-    EditTaskComponent
+    EditTaskComponent,
+    FilterTasksPipe
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [TasksService],

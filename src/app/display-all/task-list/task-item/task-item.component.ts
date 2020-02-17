@@ -7,7 +7,7 @@ import { TasksService } from "src/app/tasks.service";
   selector: "app-task-item",
   templateUrl: "./task-item.component.html",
   styleUrls: ["./task-item.component.css"],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class TaskItemComponent implements OnInit {
   @Input() taskItem: Task;

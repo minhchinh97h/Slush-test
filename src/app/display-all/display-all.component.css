@@ -1,0 +1,19 @@
+.row-container {
+  display: flex;
+  align-items: center;
+}
+
+.row-container-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.normal-para {
+  margin: 0;
+}
+
+.pressed {
+  background-color: skyblue;
+  color: white;
+}

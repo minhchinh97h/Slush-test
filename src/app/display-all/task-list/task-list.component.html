@@ -1,4 +1,7 @@
 <app-task-item
-  *ngFor="let taskItem of tasks"
+  *ngFor="
+    let taskItem of tasks
+      | filterTasks: searchMethod:searchValue:updatePipeCount
+  "
   [taskItem]="taskItem"
 ></app-task-item>
