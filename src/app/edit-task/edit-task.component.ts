@@ -82,6 +82,7 @@ export class EditTaskComponent implements OnInit {
 
     this.tasksService.updateTask(edittedTask);
     this.resetForm();
+    this.router.navigate(["/display-all"]);
   }
 
   // Prevent submitting form when hit "Enter"
