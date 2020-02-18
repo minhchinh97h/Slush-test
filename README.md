@@ -41,6 +41,8 @@ The project has been deployed to Firebase static host, click https://slush-test-
 
 ## Features
 - A simple to-do app with CRUD operations to handle to-dos/tasks.
+- Users can filter to-dos/tasks by searching for their names or tags.
+- Enter-input-field to add multiple tags at a time (by separting with ',').
 - Using Firebase to authenticate users (simple sign up and log in functions available).
 - When logged in, users can save their to-dos/tasks by clicking the "Save Data" button in the app's header to syncing with Firestore.
 - The application can be used in offline mode by using service workers provied by @angular/pwa package.
