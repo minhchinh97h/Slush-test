@@ -24,6 +24,8 @@ import { CompletedTaskItemComponent } from "./display-all/completed-task-list/co
 import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
 import { AppGuard } from "./app-guard.service";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,7 @@ import { AppGuard } from "./app-guard.service";
     LoginComponent,
     SignupComponent
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [TasksService, AppGuard],
   bootstrap: [AppComponent]
 })

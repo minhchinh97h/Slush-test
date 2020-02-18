@@ -18,6 +18,7 @@ export class AppGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
     auth().onAuthStateChanged(
       (user: firebase.User) => {
+        // If logged in, we navigate to /display-all
         if (user) {
           this.router.navigate(["/display-all"]);
         } else {
