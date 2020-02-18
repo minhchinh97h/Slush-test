@@ -49,3 +49,4 @@ The project has been deployed to Firebase static host, click https://slush-test-
 ## Known issues
 - There is a warning in console which refers to multiple SDK imports of `firebase` package. This warning can be neglected at the moment since the app's size is small and multiple SDK imports will not affect the app's performance greatly.
 - When logged in and then logged out, all to-dos/tasks will be erased for simplicities.
+- There is an exposed Firebase's API key in the repo. This is for the testing convenience only. It is a bad practice to keep confidentials revealed publicly.
