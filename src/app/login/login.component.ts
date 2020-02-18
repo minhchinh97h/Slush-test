@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { auth } from "firebase";
+import "firebase/auth";
 
 let authListener = null;
 

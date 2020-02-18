@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 
 import { auth, firestore } from "firebase";
+import "firebase/auth";
+import "firebase/firestore";
 import { TasksService } from "../tasks.service";
 import { Task } from "../shared/task.model";
 

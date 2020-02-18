@@ -7,6 +7,7 @@ import {
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { auth } from "firebase";
+import "firebase/auth";
 
 @Injectable()
 export class AppGuard implements CanActivate {
