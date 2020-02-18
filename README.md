@@ -1,27 +1,51 @@
-# AngularLearningApp
+# Simple to-do application built with Angular 9, Firebase and PWA service.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
+This project was built to show the learning curves and creativities in building an Angular app.
 
-## Development server
+## Installed packages
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Angular 9
+- Bootstrap 3.4.1
+- Firebase 7.8.2
+- Angular service worker (pwa) 9
 
-## Code scaffolding
+More can be found at `package.json`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installing instruction
 
-## Build
+Clone the repository and then run the following `npm` command:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+`
+npm install
+`
 
-## Running unit tests
+All packages and dependencies should be installed by `npm`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Running in development
 
-## Running end-to-end tests
+To start the app, simple navigate to its directory address, then type the command:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+`
+ng serve
+`
 
-## Further help
+or
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`
+ng serve --port {number}
+`
+
+## Running with Firebase static host
+
+The project has been deployed to Firebase static host, click https://slush-test-2020.firebaseapp.com/display-all to observe.
+
+## Features
+- A simple to-do app with CRUD operations to handle to-dos/tasks.
+- Using Firebase to authenticate users (simple sign up and log in functions available).
+- When logged in, users can save their to-dos/tasks by clicking the "Save Data" button in the app's header to syncing with Firestore.
+- The application can be used in offline mode by using service workers provied by @angular/pwa package.
+- In offline mode, users can still perform CRUD operations with tasks, but cannot syncing with Firestore or any Internet-required activities. When the app comes online, any performed Internet-required activities will be performed with the Firebase-deployed version as soon as possible. However, in development, performed Internet-required activities will be ignored or be thrown with a connect-issue error.
+
+## Known issues
+- There is a warning in console which refers to multiple SDK imports of `firebase` package. This warning can be neglected at the moment since the app's size is small and multiple SDK imports will not affect the app's performance greatly.
+- When logged in and then logged out, all to-dos/tasks will be erased for simplicities.
