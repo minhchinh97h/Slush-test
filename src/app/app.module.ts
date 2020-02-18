@@ -19,9 +19,11 @@ import { ShortenTextPipe } from "./shared/shorten-text.pipe";
 import { CustomDatePipe } from "./shared/customDate.pipe";
 import { EditTaskComponent } from "./edit-task/edit-task.component";
 import { FilterTasksPipe } from "./shared/filterTasks.pipe";
-import { CompletedTaskListComponent } from './display-all/completed-task-list/completed-task-list.component';
-import { CompletedTaskItemComponent } from './display-all/completed-task-list/completed-task-item/completed-task-item.component';
-import { LoginComponent } from './login/login.component';
+import { CompletedTaskListComponent } from "./display-all/completed-task-list/completed-task-list.component";
+import { CompletedTaskItemComponent } from "./display-all/completed-task-list/completed-task-item/completed-task-item.component";
+import { LoginComponent } from "./login/login.component";
+import { SignupComponent } from "./signup/signup.component";
+import { AppGuard } from "./app-guard.service";
 
 @NgModule({
   declarations: [
@@ -42,10 +44,11 @@ import { LoginComponent } from './login/login.component';
     FilterTasksPipe,
     CompletedTaskListComponent,
     CompletedTaskItemComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
-  providers: [TasksService],
+  providers: [TasksService, AppGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

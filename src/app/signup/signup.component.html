@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <h3>Create new account</h3>
+
+  <form
+    (ngSubmit)="onCreateNewAccount()"
+    style="margin-top: 30px;"
+    #formRef="ngForm"
+  >
+    <label for="email">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      required
+      email
+      name="email"
+      [(ngModel)]="emailInput"
+      #emailRef="ngModel"
+      placeholder="example@where.com"
+    />
+    <p *ngIf="!emailRef.valid && emailRef.touched">
+      Please enter a valid email
+    </p>
+    <br />
+
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      required
+      name="password"
+      placeholder="Password must contain at least one number and 6 characters"
+      [(ngModel)]="passwordInput"
+      #passwordRef="ngModel"
+      maxlength="32"
+      [ngClass]="{
+        invalidInput: !checkPassword(passwordRef.value) && passwordRef.touched
+      }"
+    />
+    <p *ngIf="!checkPassword(passwordRef.value) && passwordRef.touched">
+      Password must contain at least one number and 6 characters
+    </p>
+    <br />
+
+    <div class="row-container">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!formRef.valid || !checkPassword(passwordRef.value)"
+      >
+        Create
+      </button>
+
+      <div style="margin-left: 15px;">
+        <p style="margin-bottom: 0;">
+          or
+          <span class="go-to-login-text" (click)="onGoToLogin()">Login</span>
+        </p>
+      </div>
+    </div>
+  </form>
+</div>

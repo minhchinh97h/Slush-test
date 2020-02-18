@@ -29,4 +29,9 @@ export class TasksService {
       this.tasksChanged.emit(this.getTasks());
     }
   }
+
+  returnNewTasks(tasks: Task[]) {
+    this.tasks = tasks.slice();
+    this.tasksChanged.emit(this.getTasks());
+  }
 }

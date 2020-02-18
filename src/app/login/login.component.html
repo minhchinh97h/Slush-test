@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="container-fluid">
+  <h3>Login</h3>
+
+  <form (ngSubmit)="onLogin()" style="margin-top: 30px;">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      [(ngModel)]="emailInput"
+      name="email"
+      required
+      email
+    />
+
+    <br />
+
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      [(ngModel)]="passwordInput"
+      name="password"
+      required
+    />
+    <p *ngIf=""></p>
+
+    <br />
+
+    <div class="row-container">
+      <button type="submit" class="btn btn-primary">
+        Sign in
+      </button>
+
+      <div style="margin-left: 15px;">
+        <p style="margin-bottom: 0;">
+          or
+          <span class="create-new-account-text" (click)="onCreateNewAccount()"
+            >Create a new account</span
+          >
+        </p>
+      </div>
+    </div>
+  </form>
+</div>

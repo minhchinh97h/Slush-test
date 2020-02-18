@@ -3,8 +3,16 @@
   align-items: center;
 }
 
-.create-new-account-text {
+.go-to-login-text {
   text-decoration: underline;
   font-style: italic;
   cursor: pointer;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.invalidInput {
+    border: 1px solid red;
 }

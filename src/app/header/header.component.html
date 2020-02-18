@@ -29,31 +29,30 @@
         </li>
 
         <li>
-          <a (click)="onSelect('add')" style="cursor: pointer;">Save Data</a>
+          <a (click)="onSaveData()" style="cursor: pointer;">Save Data</a>
         </li>
 
         <li>
-          <a [routerLink]="['/login']" (click)="onSelect('display-all')"
+          <a
+            [routerLink]="['/login']"
+            (click)="onSelect('display-all')"
+            *ngIf="!loggedIn; else logout"
             >Login</a
           >
+
+          <ng-template #logout>
+            <a (click)="onLogout()" style="cursor: pointer;">Logout</a>
+          </ng-template>
         </li>
       </ul>
 
-      <!-- <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
-          <a class="dropdown-toggle" role="button"
-            >Manage <span class="caret"></span
-          ></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a>Save Data</a>
-            </li>
-            <li>
-              <a>Fetch Data</a>
-            </li>
-          </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="loggedIn">
+        <li>
+          <a>
+            Welcome, <span>{{ user }}</span>
+          </a>
         </li>
-      </ul> -->
+      </ul>
     </div>
   </div>
 </nav>
