@@ -10,6 +10,7 @@ export class Task {
     public title: string,
     public description: string,
     public dateObj: DateObj,
-    public tags: string[]
+    public tags: string[],
+    public completed: boolean
   ) {}
 }

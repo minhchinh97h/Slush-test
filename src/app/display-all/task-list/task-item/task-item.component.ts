@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, ViewEncapsulation } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewEncapsulation,
+  Output,
+  EventEmitter
+} from "@angular/core";
 import { Task } from "src/app/shared/task.model";
 import { Router } from "@angular/router";
 import { TasksService } from "src/app/tasks.service";
@@ -22,5 +29,10 @@ export class TaskItemComponent implements OnInit {
 
   onClickDeleteTask() {
     this.tasksService.deleteTask(this.taskItem.id);
+  }
+
+  onCompleteTask() {
+    this.taskItem.completed = true;
+    this.tasksService.updateTask(this.taskItem);
   }
 }

@@ -14,7 +14,7 @@ export class EditTaskComponent implements OnInit {
   tagInput: string = "";
   titleInput: string = "";
   descriptionInput: string = "";
-  taskId: string = "";
+  task: Task;
 
   @ViewChild("formRef") formRef: NgForm;
 
@@ -25,6 +25,7 @@ export class EditTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Get editting task id from the params in url
     const edittingTaskId = this.route.snapshot.params["id"];
 
     const tasks = this.tasksService.getTasks();
@@ -32,13 +33,16 @@ export class EditTaskComponent implements OnInit {
       (task: Task) => task.id === edittingTaskId
     );
 
+    // Proceed only the id is valid
     if (taskIndex > -1) {
       this.tags = tasks[taskIndex].tags;
       this.titleInput = tasks[taskIndex].title;
       this.descriptionInput = tasks[taskIndex].description;
 
-      this.taskId = tasks[taskIndex].id;
-    } else {
+      this.task = tasks[taskIndex];
+    } 
+    // Else redirect to page-not-found
+    else {
       this.router.navigate(["/not-found"]);
     }
   }
@@ -69,7 +73,7 @@ export class EditTaskComponent implements OnInit {
 
   onEditTask(): void {
     const edittedTask: Task = {
-      id: this.taskId,
+      id: this.task.id,
       title: this.titleInput,
       description: this.descriptionInput,
       tags: this.tags,
@@ -77,7 +81,8 @@ export class EditTaskComponent implements OnInit {
         day: new Date().getDate(),
         month: new Date().getMonth(),
         year: new Date().getFullYear()
-      }
+      },
+      completed: this.task.completed
     };
 
     this.tasksService.updateTask(edittedTask);

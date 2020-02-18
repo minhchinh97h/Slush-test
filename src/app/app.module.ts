@@ -19,6 +19,9 @@ import { ShortenTextPipe } from "./shared/shorten-text.pipe";
 import { CustomDatePipe } from "./shared/customDate.pipe";
 import { EditTaskComponent } from "./edit-task/edit-task.component";
 import { FilterTasksPipe } from "./shared/filterTasks.pipe";
+import { CompletedTaskListComponent } from './display-all/completed-task-list/completed-task-list.component';
+import { CompletedTaskItemComponent } from './display-all/completed-task-list/completed-task-item/completed-task-item.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { FilterTasksPipe } from "./shared/filterTasks.pipe";
     ShortenTextPipe,
     CustomDatePipe,
     EditTaskComponent,
-    FilterTasksPipe
+    FilterTasksPipe,
+    CompletedTaskListComponent,
+    CompletedTaskItemComponent,
+    LoginComponent
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [TasksService],

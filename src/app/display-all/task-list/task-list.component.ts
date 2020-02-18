@@ -15,10 +15,21 @@ export class TaskListComponent implements OnInit {
 
   constructor(private tasksService: TasksService) {}
 
+  // Get only tasks with completed flag equal false
+  getUncompletedTasks(tasks: Task[]) {
+    this.tasks = [];
+    tasks.forEach((task: Task) => {
+      if (!task.completed) {
+        this.tasks.push(task);
+      }
+    });
+  }
+
   ngOnInit(): void {
-    this.tasks = this.tasksService.getTasks();
+    const tasks = this.tasksService.getTasks();
+    this.getUncompletedTasks(tasks);
     this.tasksService.tasksChanged.subscribe((tasks: Task[]) => {
-      this.tasks = tasks;
+      this.getUncompletedTasks(tasks);
     });
   }
 }

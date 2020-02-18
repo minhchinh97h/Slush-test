@@ -2,6 +2,7 @@ import { EventEmitter } from "@angular/core";
 import { Task } from "./shared/task.model";
 export class TasksService {
   tasksChanged = new EventEmitter<Task[]>();
+
   private tasks: Task[] = [];
 
   getTasks() {

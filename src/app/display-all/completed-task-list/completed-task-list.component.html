@@ -1,0 +1,8 @@
+<app-completed-task-item
+  *ngFor="
+    let completedTask of completedTasks
+      | filterTasks: searchMethod:searchValue:updatePipeCount
+  "
+  [completedTask]="completedTask"
+>
+</app-completed-task-item>

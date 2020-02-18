@@ -27,9 +27,19 @@
             >All tasks</a
           >
         </li>
+
+        <li>
+          <a (click)="onSelect('add')" style="cursor: pointer;">Save Data</a>
+        </li>
+
+        <li>
+          <a [routerLink]="['/login']" (click)="onSelect('display-all')"
+            >Login</a
+          >
+        </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <!-- <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
           <a class="dropdown-toggle" role="button"
             >Manage <span class="caret"></span
@@ -43,7 +53,7 @@
             </li>
           </ul>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </nav>

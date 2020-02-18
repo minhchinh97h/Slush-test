@@ -4,14 +4,16 @@
       <span
         class="glyphicon glyphicon-ok"
         style="cursor: pointer;"
-        (click)="onCompleteTask()"
+        (click)="onUncompleteTask()"
       ></span>
-      <p style="margin-left: 20px;">{{ taskItem.title | shortenText: 64 }}</p>
+      <p style="margin-left: 20px;">
+        {{ completedTask.title | shortenText: 64 }}
+      </p>
     </div>
   </div>
 
   <div class="col-sm-4 field-container">
-    <p>{{ taskItem.dateObj | customDate }}</p>
+    <p>{{ completedTask.dateObj | customDate }}</p>
   </div>
 
   <div class="col-sm-4 field-container button-container">

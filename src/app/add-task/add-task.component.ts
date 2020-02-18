@@ -22,18 +22,22 @@ export class AddTaskComponent implements OnInit {
 
   onAddTag(event: KeyboardEvent): void {
     if (event.key === "Enter" || event.keyCode === 13) {
-      // ADD TAG
+      // Trim whitespaces splitted by ","
       const enteredTags = this.tagInput.trim().split(/\s*,\s*/);
+
+      // Make sure there are no empty string in the tag array
       this.tags = this.tags.concat(
         enteredTags.filter((tag: string) => {
           return tag.length > 0;
         })
       );
 
+      // Reset tag input once done adding
       this.tagInput = "";
     }
   }
 
+  // Delete a tag in tags
   onReceiveDeletedTagIndex(deletedTagIndex: number): void {
     if (deletedTagIndex !== 0) {
       this.tags.splice(deletedTagIndex, 1);
@@ -55,11 +59,15 @@ export class AddTaskComponent implements OnInit {
         month: new Date().getMonth(),
         year: new Date().getFullYear()
       },
-      tags: this.tags
+      tags: this.tags,
+      completed: false
     };
 
     this.tasksService.addTask(newTask);
     this.resetForm();
+
+    // To inform when a task is created
+    alert("Succesfully create a task!");
   }
 
   // Prevent submitting form when hit "Enter"
